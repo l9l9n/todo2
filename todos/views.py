@@ -9,15 +9,7 @@ from .models import Todo
 
 
 def make_error(code, message, status_code):
-    response = JsonResponse(
-        {
-            "error": {
-                "code": code,
-                "message": message
-            }
-        },
-        status=status_code
-    )
+    response = JsonResponse({"error": {"code": code, "message": message }}, status=status_code)
     return response
 
 
@@ -31,7 +23,7 @@ def todos_view(request):
 
 
 def get_todos(request):
-    all_todos = Todo.objects.all()
+    all_todos = Todo.objects.all().order_by("id")
     todos_list = []
 
     for todo in all_todos:
@@ -45,13 +37,13 @@ def create_todo(request):
     text = body.get("text")
 
     # валидация
-    if text is None:
+    if text is None: # если пустая строка
         return make_error("VALIDATION_ERROR", "text is required", 400)
 
-    if text.strip() == "":
+    if text.strip() == "": # так здесь если есь пробелы и если он пустой вернет 400
         return make_error("VALIDATION_ERROR", "text is required", 400)
 
-    if len(text) > 280:
+    if len(text) > 280: # такс здесь длина текста
         return make_error("VALIDATION_ERROR", "text must be 280 characters or fewer", 400)
 
 
