@@ -27,7 +27,8 @@
 - curl http://localhost:8000/todos
 
 первый раз выведет пустой массив!!!
--curl -i -X POST http://localhost:8000/todos -H "Content-Type: application/json" -d '{"text": "Buy milk"}'
+
+
 Создание записи.
 
 - curl -i -X POST http://localhost:8000/todos -H "Content-Type: application/json" -d '{"text": "Buy milk"}'
