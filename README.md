@@ -14,7 +14,7 @@
 1. git clone git@github.com:l9l9n/todo2.git
 2. зайдите в директорию cd todo2
 3. выполните след. команды
-- pip install requirements.txt
+- pip install -r requirements.txt
 - python3 manage.py makemigrations
 - python3 manage.py migrate
 - python3 manage.py runserver
@@ -27,10 +27,10 @@
 - curl http://localhost:8000/todos
 
 первый раз выведет пустой массив!!!
-
+-curl -i -X POST http://localhost:8000/todos -H "Content-Type: application/json" -d '{"text": "Buy milk"}'
 Создание записи.
 
--curl -i -X POST http://localhost:8000/todos -H "Content-Type: application/json" -d '{"text": "Buy milk"}'
+- curl -i -X POST http://localhost:8000/todos -H "Content-Type: application/json" -d '{"text": "Buy milk"}'
 
 
 
